@@ -1,0 +1,43 @@
+{
+    "name": "cliveportman/save-user-notifications",
+    "description": "Sends a notification out to admin whenever a user updates their details using a front-end form.",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "save user notifications"
+    ],
+    "support": {
+        "docs": "https://github.com/cliveportman/save-user-notifications/blob/master/README.md",
+        "issues": "https://github.com/cliveportman/save-user-notifications/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Clive Portman",
+            "homepage": "https://clive.theportman.co"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "cliveportman\\saveusernotifications\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Save user notifications",
+        "handle": "save-user-notifications",
+        "hasCpSettings": true,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/cliveportman/save-user-notifications/master/CHANGELOG.md",
+        "components": {
+            "email": "cliveportman\\saveusernotifications\\services\\Email"
+        },
+        "class": "cliveportman\\saveusernotifications\\SaveUserNotifications"
+    }
+}

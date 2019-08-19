@@ -1,0 +1,26 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Save user notifications plugin for Craft CMS 3.x
+ *
+ * Save user notifications Settings.twig
+ *
+ * @author    Clive Portman
+ * @copyright Copyright (c) 2019 Clive Portman
+ * @link      https://clive.theportman.co
+ * @package   SaveUserNotifications
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("cliveportman\\saveusernotifications\\assetbundles\\saveusernotifications\\SaveUserNotificationsAsset") %}
+
+{{ forms.textField({
+    label: 'Email address to notify',
+    instructions: '',
+    id: 'notificationEmail',
+    name: 'notificationEmail',
+    value: settings['notificationEmail']})
+}}
