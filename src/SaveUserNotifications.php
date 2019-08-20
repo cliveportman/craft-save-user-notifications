@@ -99,7 +99,14 @@ class SaveUserNotifications extends Plugin
                 $event->element instanceof \craft\elements\User
                 && Craft::$app->request->getIsSiteRequest()
             ) {
-                SaveUserNotifications::$plugin->email->notifyUserSaved($event->element);
+
+                $date = new DateTime();
+                $yesterday = $date->modify('-1 day');
+                if ($event->element->dateCreated < $yesterday) {
+                    SaveUserNotifications::$plugin->email->notifyUserSaved($event->element);
+                }
+
+                
             }
         });
 
