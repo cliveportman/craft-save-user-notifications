@@ -17,6 +17,9 @@ use Craft;
 use craft\base\Plugin;
 use craft\services\Plugins;
 use craft\events\PluginEvent;
+use DateTime;
+
+use craft\commerce\Plugin as CraftCommerce;
 
 use yii\base\Event;
 
@@ -102,11 +105,16 @@ class SaveUserNotifications extends Plugin
 
                 $date = new DateTime();
                 $yesterday = $date->modify('-1 day');
-                if ($event->element->dateCreated < $yesterday) {
+
+                $subscriptions = \craft\commerce\elements\Subscription::find()
+                    ->user($event->element)
+                    ->anyStatus()
+                    ->all();
+
+                if (!empty($subscriptions)) {
                     SaveUserNotifications::$plugin->email->notifyUserSaved($event->element);
                 }
 
-                
             }
         });
 
